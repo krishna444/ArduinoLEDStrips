@@ -17,7 +17,7 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800
 
 TKLightSensor lightSensor(I0);
 //TKButton onOffButton(I1);
-TKPotentiometer potentiometer(I2);
+//TKPotentiometer potentiometer(I2);
 
 
 bool increasing = true;
@@ -62,13 +62,13 @@ struct PixelState pixel[NUMPIXELS];
 // I want the pixels to sparkle, so I will use a triangle wave,
 // which is to say that they will come on at full brightness and them fade
 
-const unsigned long FADE_TIME_MS = 1000; // three seconds
+const unsigned long FADE_TIME_MS = 3000; // three seconds
 
 // the pixels should come on at a random time, To simulate this,
 // the pixel will be off for a random amount of time.
 
-const int MIN_OFF_TIME_MS = 500;
-int MAX_OFF_TIME_MS = 2500;
+const int MIN_OFF_TIME_MS = 1500;
+int MAX_OFF_TIME_MS = 3000;
 //int delayValue=500;
 
 void setup()
@@ -91,8 +91,9 @@ void setup()
 void loop()
 {
     float light = lightSensor.read();
-    //Serial.write("Light sensor");
-    //Serial.print(light);
+    Serial.write("Light sensor");
+    Serial.print(light);
+    Serial.println();
     if (light > 50)
     {
             strip.clear();
@@ -100,12 +101,13 @@ void loop()
             delay(2000);
             return;
     }
-    int dimmerValue = potentiometer.read();
+    //int dimmerValue = potentiometer.read();
+    //Serial.print("Dimmer");Serial.println(dimmerValue);
     //int button = onOffButton.read();
 
     for (int i = 0; i < NUMPIXELS; i++)
     {
-        MAX_OFF_TIME_MS = map(dimmerValue, 0, 1024, 10000, 600);
+        //MAX_OFF_TIME_MS = 600;//map(dimmerValue, 0, 1024, 10000, 600);
         if (pixel[i].on)
         {
             // pixel is on
@@ -129,7 +131,7 @@ void loop()
                 brightness = brightness * brightness; //gamma correction
 
                 // ok. do we actually need to change the pixel colour?
-                int mostRecentBrightness = 255 * brightness;
+                int mostRecentBrightness = 200 * brightness;
                 if (mostRecentBrightness != pixel[i].mostRecentBrightness)
                 {
                     // yes we do
