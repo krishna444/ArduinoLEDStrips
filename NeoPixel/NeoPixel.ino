@@ -1,5 +1,5 @@
 #include <Adafruit_NeoPixel.h>
-#include <TinkerKit.h>
+#include "TinkerKit.h"
 #include <math.h>
 
 #define PIN 7
@@ -16,7 +16,7 @@
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
 TKLightSensor lightSensor(I0);
-TKButton onOffButton(I1);
+//TKButton onOffButton(I1);
 TKPotentiometer potentiometer(I2);
 
 
@@ -90,27 +90,25 @@ void setup()
 
 void loop()
 {
-    for (int i = 0; i < NUMPIXELS; i++)
+    float light = lightSensor.read();
+    //Serial.write("Light sensor");
+    //Serial.print(light);
+    if (light > 50)
     {
-        float light = lightSensor.read();
-        int button = onOffButton.read();
-        int dimmerValue = potentiometer.read();
-
-        MAX_OFF_TIME_MS = map(dimmerValue, 0, 1024, 10000, 600);
-
-        if (light > 50)
-        {
             strip.clear();
             strip.show();
             delay(2000);
             return;
-        }
+    }
+    int dimmerValue = potentiometer.read();
+    //int button = onOffButton.read();
 
-
+    for (int i = 0; i < NUMPIXELS; i++)
+    {
+        MAX_OFF_TIME_MS = map(dimmerValue, 0, 1024, 10000, 600);
         if (pixel[i].on)
         {
             // pixel is on
-
             if (millis() - pixel[i].timeMarkMs >= FADE_TIME_MS)
             {
                 // time to turn the pixel off
