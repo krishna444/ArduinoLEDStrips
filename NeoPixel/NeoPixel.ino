@@ -19,9 +19,6 @@ TKLightSensor lightSensor(I0);
 //TKButton onOffButton(I1);
 //TKPotentiometer potentiometer(I2);
 
-
-bool increasing = true;
-
 // we want to randomly select from these colours
 
 const int COLOURS[][3] = {
