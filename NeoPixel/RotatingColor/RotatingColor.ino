@@ -5,7 +5,16 @@
 #define NUMPIXELS 20
 #define LIGHT_THRESHOLD 40
 
-int colors[7][3] = {{148, 0, 211}, {75, 0, 130}, {0, 0, 255}, {0, 255, 0}, {255, 255, 0}, {255, 127, 0}, {255, 0, 0}};
+int colors[][3] = {
+    {148, 0, 211}, //Voilet
+    {75, 0, 130},  //Indigo
+    {0, 0, 255},   //Blue 
+    {0, 255, 0},   //Green 
+    {255, 255, 0}, //Yellow
+    {255, 127, 0}, //Orange 
+    {255, 0, 0}    //Red
+};
+const int NCOLOURS = sizeof(colors) / sizeof(*colors);
 ;
 int selectedPixel = 0;
 int colorIndex = 0;
@@ -38,7 +47,7 @@ void loop()
     {
         selectedPixel = 0;
         colorIndex++;
-        if (colorIndex >= 7)
+        if (colorIndex >= NCOLOURS)
         {
             colorIndex = 0;
         }
