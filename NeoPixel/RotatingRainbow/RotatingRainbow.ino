@@ -38,10 +38,7 @@ void loop()
         delay(2000);
         return;
     }
-    for (int i = 0; i < NUMPIXELS; i++)
-    {
-        strip.setPixelColor(i, 0, 0, 0);
-    }
+    strip.clear();    
     for (int index = 0; index < NUMCOLORS; index++)
     {        
         strip.setPixelColor((selectedPixel + index) % NUMPIXELS, rainbow[index][0], rainbow[index][1], rainbow[index][2]);
