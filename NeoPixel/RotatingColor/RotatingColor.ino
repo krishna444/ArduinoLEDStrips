@@ -1,9 +1,13 @@
+#define PROD
 #include <Adafruit_NeoPixel.h>
+#ifdef PROD
 #include "TinkerKit.h"
+#endif
 #include <math.h>
 #define PIN 7
 #define NUMPIXELS 20
 #define LIGHT_THRESHOLD 40
+
 
 int colors[][3] = {
     {148, 0, 211}, //Voilet
@@ -22,7 +26,9 @@ int max_delay = 480, min_delay = 100;
 int delay_mills = random(min_delay, max_delay);
 
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+#ifdef PROD
 TKLightSensor lightSensor(I0);
+#endif
 
 void setup()
 {
@@ -32,6 +38,7 @@ void setup()
 
 void loop()
 {
+    #ifdef PROD
     float light = lightSensor.read();
     if (light > LIGHT_THRESHOLD)
     {
@@ -40,6 +47,8 @@ void loop()
         delay(2000);
         return;
     }
+    #endif
+
     strip.clear();
     strip.setPixelColor(selectedPixel, colors[colorIndex][0], colors[colorIndex][1], colors[colorIndex][2]);
     selectedPixel++;

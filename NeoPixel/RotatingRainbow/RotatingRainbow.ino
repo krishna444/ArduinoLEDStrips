@@ -1,5 +1,8 @@
+#define PROD
 #include <Adafruit_NeoPixel.h>
+#ifdef PROD
 #include "TinkerKit.h"
+#endif
 #include <math.h>
 #define PIN 7
 #define NUMPIXELS 20
@@ -20,7 +23,9 @@ int rainbow[7][3] = {
 int NUMCOLORS = sizeof(rainbow) / sizeof(*rainbow);
 
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+#ifdef PROD
 TKLightSensor lightSensor(I0);
+#endif
 
 void setup()
 {
@@ -30,6 +35,7 @@ void setup()
 
 void loop()
 {
+    #ifdef PROD
     float light = lightSensor.read();
     if (light > 30)
     {
@@ -38,6 +44,7 @@ void loop()
         delay(2000);
         return;
     }
+    #endif
     strip.clear();    
     for (int index = 0; index < NUMCOLORS; index++)
     {        

@@ -1,5 +1,8 @@
+#define PROD
 #include <Adafruit_NeoPixel.h>
+#ifdef PROD
 #include "TinkerKit.h"
+#endif
 #include <math.h>
 
 #define PIN 7
@@ -14,8 +17,9 @@
 //   NEO_GRB     Pixels are wired for GRB bitstream (most NeoPixel products)
 //   NEO_RGB     Pixels are wired for RGB bitstream (v1 FLORA pixels, not v2)
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-
+#ifdef PROD
 TKLightSensor lightSensor(I0);
+#endif
 // TKButton onOffButton(I1);
 // TKPotentiometer potentiometer(I2);
 
@@ -90,6 +94,7 @@ void setup()
 
 void loop()
 {
+    #ifdef PROD
     float light = lightSensor.read();
     Serial.write("Light sensor");
     Serial.print(light);
@@ -100,10 +105,11 @@ void loop()
         strip.show();
         delay(2000);
         return;
-    }
+    }    
     // int dimmerValue = potentiometer.read();
     // Serial.print("Dimmer");Serial.println(dimmerValue);
     // int button = onOffButton.read();
+    #endif
 
     for (int i = 0; i < NUMPIXELS; i++)
     {
