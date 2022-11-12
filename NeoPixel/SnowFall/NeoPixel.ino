@@ -16,19 +16,22 @@
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
 TKLightSensor lightSensor(I0);
-//TKButton onOffButton(I1);
-//TKPotentiometer potentiometer(I2);
+// TKButton onOffButton(I1);
+// TKPotentiometer potentiometer(I2);
 
 // we want to randomly select from these colours
 
 const int COLOURS[][3] = {
-    {255, 128, 64}, //Red
-    {64, 255, 64},  //Green
-    {64, 64, 255},  //Blue
-    {255, 255, 32}, //Yellow
-    {255, 64, 255}, //Pink
-    {64, 255, 255}, //Cyan
-    {255, 255, 255} //White
+    {255, 128, 64},  // Red
+    {64, 255, 64},   // Green
+    {64, 64, 255},   // Blue
+    {255, 255, 32},  // Yellow
+    {255, 64, 255},  // Pink
+    {64, 255, 255},  // Cyan
+    {255, 255, 255}, // White
+    {148, 64, 211},  // Voilet
+    {75, 64, 130},   // Indigo
+    {255, 127, 64}   // Orange
 };
 
 const int NCOLOURS = sizeof(COLOURS) / sizeof(*COLOURS);
@@ -59,14 +62,14 @@ struct PixelState pixel[NUMPIXELS];
 // I want the pixels to sparkle, so I will use a triangle wave,
 // which is to say that they will come on at full brightness and them fade
 
-const unsigned long FADE_TIME_MS = 3000; // three seconds
+const unsigned long FADE_TIME_MS = 6000; // three seconds
 
 // the pixels should come on at a random time, To simulate this,
 // the pixel will be off for a random amount of time.
 
-const int MIN_OFF_TIME_MS = 1500;
-int MAX_OFF_TIME_MS = 3000;
-//int delayValue=500;
+const int MIN_OFF_TIME_MS = 3000;
+int MAX_OFF_TIME_MS = 6000;
+// int delayValue=500;
 
 void setup()
 {
@@ -93,18 +96,18 @@ void loop()
     Serial.println();
     if (light > 50)
     {
-            strip.clear();
-            strip.show();
-            delay(2000);
-            return;
+        strip.clear();
+        strip.show();
+        delay(2000);
+        return;
     }
-    //int dimmerValue = potentiometer.read();
-    //Serial.print("Dimmer");Serial.println(dimmerValue);
-    //int button = onOffButton.read();
+    // int dimmerValue = potentiometer.read();
+    // Serial.print("Dimmer");Serial.println(dimmerValue);
+    // int button = onOffButton.read();
 
     for (int i = 0; i < NUMPIXELS; i++)
     {
-        //MAX_OFF_TIME_MS = 600;//map(dimmerValue, 0, 1024, 10000, 600);
+        // MAX_OFF_TIME_MS = 600;//map(dimmerValue, 0, 1024, 10000, 600);
         if (pixel[i].on)
         {
             // pixel is on
@@ -125,7 +128,7 @@ void loop()
                 // calculate the new brightness as flaoting point
                 // this is the bit that you change if you want the fade pattern to change
                 float brightness = 1 - (millis() - pixel[i].timeMarkMs) / ((float)FADE_TIME_MS);
-                brightness = brightness * brightness; //gamma correction
+                brightness = brightness * brightness; // gamma correction
 
                 // ok. do we actually need to change the pixel colour?
                 int mostRecentBrightness = 200 * brightness;
