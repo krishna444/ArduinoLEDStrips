@@ -65,6 +65,7 @@ Because you can't connect and write directly into Arduino, you have to compile i
     Now, the final step is to compile and upload. Please note that, we can upload only after compilation. 
 
     `arduino-cli compile -p /dev/ttyACM0 -b arduino:avr:uno Sample.ino`
+    
     `arduino-cli upload -p /dev/ttyACM0 -b arduino:avr:uno Sample.ino`
 
 5. **Installing Libraries**
