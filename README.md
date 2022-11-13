@@ -78,8 +78,6 @@ Because you can't connect and write directly into Arduino, you have to compile i
 
     `arduino-cli lib install "Adafruit NeoPixel"`    
 
-
-
 ## References:
 
 https://arduino.github.io/arduino-cli/0.19/installation/
