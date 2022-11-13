@@ -7,7 +7,7 @@
 #define PIN 7
 #define NUMPIXELS 20
 int shift = 0;
-int max_delay = 420, min_delay = 50;
+int max_delay = 420, min_delay = 10;
 int delay_mills = random(min_delay, max_delay);
 int selectedPixel = 0;
 // int colorIndex=0;
