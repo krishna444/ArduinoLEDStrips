@@ -1,6 +1,9 @@
 ## Introduction
+
 Programming in Arduino needs some basic understanding of C/C++. The projects included here are developed as my hobby projects and I enjoyed and learned alot!
+
 ## Compile and Upload Code
+
 You can have lots of documents and tutorials on how to write code for Arduino. After you have written an Arduino program (*.ino extension), you have to compile it and upload it in the controller. 
 
 Because you can't connect and write directly into Arduino, you have to compile it in your machine and upload the compile file into Arduino. 
@@ -25,16 +28,18 @@ Because you can't connect and write directly into Arduino, you have to compile i
 
     Go into Arduino installation directly and run this command. Arduino client will be intalled in the bin directory. 
 
-    curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sudo sh
+    `curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sudo sh`
 
     If you want to provide the custom bin directory, run this command.
 
-    curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=~/local/bin sudo sh
+    `curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=~/local/bin sudo sh`
 
     Full Docu: https://arduino.github.io/arduino-cli/0.19/installation/
 
     After installation, don't to update the PATH environment variable.
+
     For example: 
+
     export PATH=[arduino-cli-path]:$PATH
 
 2. **Getting Board Info**
@@ -74,7 +79,7 @@ Because you can't connect and write directly into Arduino, you have to compile i
 
 
 
-References:
+## References:
 
 https://arduino.github.io/arduino-cli/0.19/installation/
 
