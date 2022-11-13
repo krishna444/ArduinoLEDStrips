@@ -83,3 +83,11 @@ Because you can't connect and write directly into Arduino, you have to compile i
 https://arduino.github.io/arduino-cli/0.19/installation/
 
 https://medium.com/microsoft-makers/first-impressions-arduino-cli-d9e2b45b69
+
+
+**NOTE**
+The TinkerKit libraries are not directly installable from Arduino IDE or arduino-cli. It is available in git 
+
+https://github.com/TinkerKit/TinkerKit 
+
+I have copied the two headerfiles from there. 
