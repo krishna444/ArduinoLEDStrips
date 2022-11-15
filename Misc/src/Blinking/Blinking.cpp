@@ -3,15 +3,21 @@
 
 Blinking::Blinking(uint8_t _pin)
 {
-    Blinking(_pin,500);
+    pin=_pin;
+    on_delay=500;
+    off_delay=100;
+    pinMode(_pin, OUTPUT);
 
 }
 
 Blinking::Blinking(uint8_t _pin, uint16_t _delay)
 {
-    Blinking(_pin,_delay,_delay);
-
+    pin = _pin;
+    on_delay = _delay;
+    off_delay = _delay;
+    pinMode(_pin, OUTPUT);
 }
+
 
 Blinking::Blinking(uint8_t _pin, uint16_t _on_delay, uint16_t _off_delay)
 {
