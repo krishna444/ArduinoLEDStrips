@@ -1,6 +1,18 @@
 #include <Arduino.h>
 #include "Blinking.h"
 
+Blinking::Blinking(uint8_t _pin)
+{
+    Blinking(_pin,500);
+
+}
+
+Blinking::Blinking(uint8_t _pin, uint16_t _delay)
+{
+    Blinking(_pin,_delay,_delay);
+
+}
+
 Blinking::Blinking(uint8_t _pin, uint16_t _on_delay, uint16_t _off_delay)
 {
     pin = _pin;
