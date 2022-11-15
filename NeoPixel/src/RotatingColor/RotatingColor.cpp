@@ -38,6 +38,7 @@ void RotatingColor::process()
     } 
     strip.clear();
     strip.setPixelColor(selectedPixel, colors[colorIndex][0], colors[colorIndex][1], colors[colorIndex][2]);
+    strip.setPixelColor((selectedPixel+NUMPIXELS/2)%NUMPIXELS, colors[(colorIndex+1)%NCOLOURS][0], colors[(colorIndex+1)%NCOLOURS][1], colors[(colorIndex+1)%NCOLOURS][2]);
     selectedPixel++;
     if (selectedPixel >= NUMPIXELS)
     {
