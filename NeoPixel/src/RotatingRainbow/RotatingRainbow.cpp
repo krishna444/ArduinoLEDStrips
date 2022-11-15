@@ -19,19 +19,23 @@ int selectedPixel1=0;
 int delay_millis=0;
 
 RotatingRainbow::RotatingRainbow(){
-    RotatingRainbow(420,120);    
+    min_delay=_120;
+    max_delay=420;
+    delay_millis=random(min_delay,max_delay);
 }
 
-RotatingRainbow::RotatingRainbow(uint16_t delay)
+RotatingRainbow::RotatingRainbow(uint16_t _delay)
 {
-    RotatingRainbow(delay,delay);
+    min_delay=_delay;
+    max_delay=_delay;
+    delay_millis=random(_delay,_delay);
 }
 
-RotatingRainbow::RotatingRainbow(uint16_t min_dealy, uint16_t max_dealy)
+RotatingRainbow::RotatingRainbow(uint16_t _min_dealy, uint16_t _max_dealy)
 {
-    this->min_delay = min_dealy;
-    this->max_delay = max_delay;
-    delay_millis=random(this->min_delay, this->max_delay);
+    min_delay = _min_dealy;
+    max_delay = _max_delay;
+    delay_millis=random(_min_delay, _max_delay);
 }
 
 void RotatingRainbow::run(){
