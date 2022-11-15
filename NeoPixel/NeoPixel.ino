@@ -1,12 +1,19 @@
-#include "src/RotatingColor/RotatingColor.h"
-RotatingColor rotatingColor;
+//#include "src/RotatingColor/RotatingColor.h"
+#include "src/RotatingRainbow/RotatingRainbow.h"
+
+//RotatingColor *rotatingColor;
+RotatingRainbow *rotatingRainbow;
+
 
 void setup()
 {  
-    //Initialise  
+    //rotatingColor = new RotatingColor(); 
+    rotatingRainbow=new RotatingRainbow();
 }
 
 void loop()
 {    
-    rotatingColor.process();    
+    //rotatingColor->process();    
+    rotatingRainbow->run();
+
 }

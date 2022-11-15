@@ -1,4 +1,5 @@
 #include "RotatingColor.h"
+#include<stdio.h>
 
 int colors[][3] = {
     {148, 0, 211}, // Voilet
