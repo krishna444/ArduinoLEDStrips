@@ -26,7 +26,7 @@ class SnowFall
 {
 private:
     Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-    //TKLightSensor lightSensor(I0);
+    TKLightSensor lightSensor=TKLightSensor(I0);
     struct PixelState pixel[NUMPIXELS];
     uint16_t min_off_time_ms;
     uint16_t max_off_time_ms;
@@ -50,14 +50,9 @@ public:
     };
     static const int NCOLOURS = sizeof(COLOURS) / sizeof(*COLOURS);
     SnowFall():SnowFall(MIN_OFF_TIME_MS,MAX_OFF_TIME_MS,FADE_TIME_MS)
-    {
-       /* this->min_off_time_ms = MIN_OFF_TIME_MS;
-        this->max_off_time_ms = MAX_OFF_TIME_MS;
-        this->fade_time_ms = FADE_TIME_MS;*/
-    }
+    {}
     SnowFall(uint16_t off_time, uint16_t fade_time):SnowFall(off_time,off_time,fade_time)
-    {
-    }
+    {}
     SnowFall(uint16_t min_off_time, uint16_t max_off_time, uint16_t fade_time)
     {
         this->min_off_time_ms = min_off_time;
@@ -85,14 +80,14 @@ public:
 
     void process()
     {
-        /*float light = this->lightSensor.read();
+        float light = this->lightSensor.read();
         if (light > 30)
         {
             strip.clear();
             strip.show();
             delay(2000);
             return;
-        }*/
+        }
         for (int i = 0; i < NUMPIXELS; i++)
         {
             // MAX_OFF_TIME_MS = 600;//map(dimmerValue, 0, 1024, 10000, 600);
