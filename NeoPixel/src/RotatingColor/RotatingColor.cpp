@@ -13,7 +13,7 @@ int colors[][3] = {
 const int NCOLOURS = sizeof(colors) / sizeof(*colors);
 int selectedPixel = 0;
 int colorIndex = 0;
-int max_delay = 480, min_delay = 100;
+int max_delay = 30, min_delay = 5;
 int delay_mills = random(min_delay, max_delay);
 
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
@@ -29,6 +29,7 @@ RotatingColor::RotatingColor()
 void RotatingColor::process()
 {    
     float light = lightSensor.read();
+    Serial.print(light);
     if (light > LIGHT_THRESHOLD)
     {
         strip.clear();
