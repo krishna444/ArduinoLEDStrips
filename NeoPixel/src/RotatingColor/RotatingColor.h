@@ -8,7 +8,12 @@
 
 class RotatingColor
 {
+private:
+    uint16_t min_delay;
+    uint16_t max_delay;
 public:
     RotatingColor();
+    RotatingColor(uint16_t _delay);
+    RotatingColor(uint16_t _min_delay, uint16_t _max_delay);
     void process();
 };

@@ -18,23 +18,11 @@ TKLightSensor lightSensor1(I0);
 int selectedPixel1=0;
 int delay_millis=0;
 
-RotatingRainbow::RotatingRainbow(){
-    min_delay=120;
-    max_delay=420;
-    delay_millis=random(min_delay,max_delay);
-    Serial.begin(115200);
-    strip1.begin();      
-    //RotatingRainbow(120,420);
-}
+RotatingRainbow::RotatingRainbow():RotatingRainbow(120,420)
+{}
 
-RotatingRainbow::RotatingRainbow(uint16_t _delay)
-{
-    min_delay=_delay;
-    max_delay=_delay;
-    delay_millis=random(_delay,_delay);
-    Serial.begin(115200);
-    strip1.begin();      
-}
+RotatingRainbow::RotatingRainbow(uint16_t _delay):RotatingRainbow(_delay,_delay)
+{}
 
 RotatingRainbow::RotatingRainbow(uint16_t _min_delay, uint16_t _max_delay)
 {
