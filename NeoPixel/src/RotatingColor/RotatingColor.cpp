@@ -11,14 +11,11 @@ int colors[][3] = {
     {255, 0, 0}    // Red
 };
 const int NCOLOURS = sizeof(colors) / sizeof(*colors);
-int selectedPixel = 0;
 int colorIndex = 0;
 int max_delay = 420, min_delay = 120;
 int delay_mills = random(min_delay, max_delay);
 
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
-TKLightSensor lightSensor(I0);
 
 RotatingColor::RotatingColor():RotatingColor(min_delay,max_delay)
 {}

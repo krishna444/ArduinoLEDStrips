@@ -4,6 +4,7 @@
 #include <math.h>
 #define PIN 7
 #define NUMPIXELS 20
+#define LIGHT_THRESHOLD 40
 
 struct PixelState
 {
@@ -81,7 +82,7 @@ public:
     void process()
     {
         float light = this->lightSensor.read();
-        if (light > 30)
+        if (light > LIGHT_THRESHOLD)
         {
             strip.clear();
             strip.show();

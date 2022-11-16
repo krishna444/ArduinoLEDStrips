@@ -9,52 +9,48 @@ int rainbow[][3] = {
     {255, 127, 0}, // Orange
     {255, 0, 0}};  // Red
 
-  
 const int NUMCOLORS = sizeof(rainbow) / sizeof(*rainbow);
 
-Adafruit_NeoPixel strip1 = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-TKLightSensor lightSensor1(I0);
+int delay_millis = 0;
 
-int selectedPixel1=0;
-int delay_millis=0;
+RotatingRainbow::RotatingRainbow() : RotatingRainbow(120, 420)
+{
+}
 
-RotatingRainbow::RotatingRainbow():RotatingRainbow(120,420)
-{}
-
-RotatingRainbow::RotatingRainbow(uint16_t _delay):RotatingRainbow(_delay,_delay)
-{}
+RotatingRainbow::RotatingRainbow(uint16_t _delay) : RotatingRainbow(_delay, _delay)
+{
+}
 
 RotatingRainbow::RotatingRainbow(uint16_t _min_delay, uint16_t _max_delay)
 {
     min_delay = _min_delay;
     max_delay = _max_delay;
-    delay_millis=random(_min_delay, _max_delay);
+    delay_millis = random(_min_delay, _max_delay);
     Serial.begin(115200);
-    strip1.begin();      
+    strip.begin();
 }
 
-
-
-void RotatingRainbow::process(){
-    /*float light = lightSensor1.read();
-    if (light > 10)
+void RotatingRainbow::process()
+{
+    float light = this->lightSensor.read();
+    if (light > LIGHT_THRESHOLD)
     {
-        strip1.clear();
-        strip1.show();
+        strip.clear();
+        strip.show();
         delay(2000);
         return;
-    }*/
-    strip1.clear();
-    for (int index = 0; index < NUMCOLORS; index++)
-    {        
-        strip1.setPixelColor((selectedPixel1 + index) % NUMPIXELS, rainbow[index][0], rainbow[index][1], rainbow[index][2]);
     }
-    selectedPixel1++;
-    if (selectedPixel1 >= NUMPIXELS)
+    strip.clear();
+    for (int index = 0; index < NUMCOLORS; index++)
     {
-        selectedPixel1 = 0;
+        strip.setPixelColor((selectedPixel + index) % NUMPIXELS, rainbow[index][0], rainbow[index][1], rainbow[index][2]);
+    }
+    selectedPixel++;
+    if (selectedPixel >= NUMPIXELS)
+    {
+        selectedPixel = 0;
         delay_millis = random(min_delay, max_delay);
     }
-    strip1.show();
+    strip.show();
     delay(delay_millis);
 }
