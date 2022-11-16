@@ -81,7 +81,8 @@ public:
     void process()
     {
         float light = this->lightSensor.read();
-        if (light > 30)
+        Serial.println(light);
+        if (light > 50)
         {
             strip.clear();
             strip.show();
