@@ -82,7 +82,12 @@ public:
     void process()
     {
         float light = this->lightSensor.read();
+<<<<<<< HEAD
         if (light > LIGHT_THRESHOLD)
+=======
+        Serial.println(light);
+        if (light > 50)
+>>>>>>> a99b8c912b2a1050301526cd567e0f9f77efe54d
         {
             strip.clear();
             strip.show();
