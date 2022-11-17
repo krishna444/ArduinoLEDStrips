@@ -13,7 +13,8 @@ private:
     uint16_t max_delay;
     int selectedPixel = 0;
     Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-    TKLightSensor lightSensor=TKLightSensor(I0);
+    TKLightSensor lightSensor = TKLightSensor(I0);
+
 public:
     RotatingColor();
     RotatingColor(uint16_t _delay);

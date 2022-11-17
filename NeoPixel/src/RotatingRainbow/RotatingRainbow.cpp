@@ -23,6 +23,8 @@ RotatingRainbow::RotatingRainbow(uint16_t _delay) : RotatingRainbow(_delay, _del
 
 RotatingRainbow::RotatingRainbow(uint16_t _min_delay, uint16_t _max_delay)
 {
+    this->strip = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+    this->lightSensor = new TKLightSensor(I0);
     min_delay = _min_delay;
     max_delay = _max_delay;
     delay_millis = random(_min_delay, _max_delay);
@@ -32,7 +34,7 @@ RotatingRainbow::RotatingRainbow(uint16_t _min_delay, uint16_t _max_delay)
 
 void RotatingRainbow::process()
 {
-    float light = this->lightSensor.read();
+    float light = this->lightSensor->read();
     if (light > LIGHT_THRESHOLD)
     {
         strip.clear();
