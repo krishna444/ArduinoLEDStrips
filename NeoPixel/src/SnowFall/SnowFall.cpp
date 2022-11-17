@@ -27,7 +27,7 @@ class SnowFall
 {
 private:
     Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-    TKLightSensor lightSensor=TKLightSensor(I0);
+    TKLightSensor lightSensor = TKLightSensor(I0);
     struct PixelState pixel[NUMPIXELS];
     uint16_t min_off_time_ms;
     uint16_t max_off_time_ms;
