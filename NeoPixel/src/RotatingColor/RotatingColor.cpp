@@ -11,11 +11,8 @@ int colors[][3] = {
     {255, 0, 0}    // Red
 };
 const int NCOLOURS = sizeof(colors) / sizeof(*colors);
-int colorIndex = 0;
-int max_delay = 420, min_delay = 120;
-int delay_mills = random(min_delay, max_delay);
 
-RotatingColor::RotatingColor() : RotatingColor(min_delay, max_delay)
+RotatingColor::RotatingColor() : RotatingColor(MIN_DELAY, MAX_DELAY)
 {
 }
 RotatingColor::RotatingColor(uint16_t _delay) : RotatingColor(_delay, _delay)
@@ -23,15 +20,19 @@ RotatingColor::RotatingColor(uint16_t _delay) : RotatingColor(_delay, _delay)
 }
 RotatingColor::RotatingColor(uint16_t _min_delay, uint16_t _max_delay)
 {
+    this->strip= Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+    this->lightSensor=new TKLightSensor(I0);
     min_delay = _min_delay;
     max_delay = _max_delay;
     Serial.begin(115200);
     strip.begin();
+    delay_millis = random(min_delay, max_delay);
+    colorIndex = 0;
 }
 
 void RotatingColor::process()
 {
-    float light = lightSensor.read();
+    float light = lightSensor->read();
     Serial.print(light);
     if (light > LIGHT_THRESHOLD)
     {
@@ -52,9 +53,9 @@ void RotatingColor::process()
         {
             colorIndex = 0;
         }
-        delay_mills = random(min_delay, max_delay);
+        delay_millis = random(min_delay, max_delay);
     }
 
     strip.show();
-    delay(delay_mills);
+    delay(delay_millis);
 }

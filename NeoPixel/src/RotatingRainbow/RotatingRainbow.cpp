@@ -11,9 +11,7 @@ int rainbow[][3] = {
 
 const int NUMCOLORS = sizeof(rainbow) / sizeof(*rainbow);
 
-int delay_millis = 0;
-
-RotatingRainbow::RotatingRainbow() : RotatingRainbow(120, 420)
+RotatingRainbow::RotatingRainbow() : RotatingRainbow(MIN_DELAY, MAX_DELAY)
 {
 }
 

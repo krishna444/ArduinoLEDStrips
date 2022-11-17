@@ -9,6 +9,9 @@
 class RotatingRainbow
 {
 private:
+    static const int MIN_DELAY=120;
+    static const int MAX_DELAY=480;
+    int delay_millis;
     uint16_t max_delay;
     uint16_t min_delay;
     int selectedPixel = 0;

@@ -9,11 +9,15 @@
 class RotatingColor
 {
 private:
+    static const int MIN_DELAY=120;
+    static const int MAX_DELAY=480;
+    int delay_millis;
+    int colorIndex;
     uint16_t min_delay;
     uint16_t max_delay;
-    int selectedPixel = 0;
-    Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-    TKLightSensor lightSensor = TKLightSensor(I0);
+    int selectedPixel;
+    Adafruit_NeoPixel strip;
+    TKLightSensor *lightSensor;
 
 public:
     RotatingColor();
