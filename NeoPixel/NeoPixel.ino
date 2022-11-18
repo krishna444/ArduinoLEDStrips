@@ -2,11 +2,13 @@
 //#include "src/RotatingRainbow/RotatingRainbow.h"
 //#include "src/SnowFall/SnowFall.cpp"
 #include "src/Sequencer/Sequencer.cpp"
+#include "src/Gradient/Gradient.cpp"
 
  RotatingColor *rotatingColor;
 //RotatingRainbow *rotatingRainbow;
 // SnowFall *snowFall;
 Sequencer *sequencer;
+Gradient *gradient;
 
 void setup()
 {
@@ -14,6 +16,7 @@ void setup()
    //rotatingRainbow = new RotatingRainbow(800, 2000);
    // snowFall = new SnowFall();
    sequencer=new Sequencer();
+   gradient=new Gradient();
 }
 
 void loop()
@@ -21,5 +24,6 @@ void loop()
    //rotatingColor->process(false);
    // rotatingRainbow->process();
    // snowFall->process();
-   sequencer->process();
+   //sequencer->process();
+   gradient->process();
 }
