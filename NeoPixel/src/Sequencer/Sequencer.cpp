@@ -101,7 +101,7 @@ public:
         strip.show();
 
         startPixel++;
-        if (startPixel == 60)
+        if (startPixel == NUMPIXELS)
             startPixel = 0;
     }
 

@@ -34,7 +34,7 @@ public:
 
     void process()
     {        
-        delayTime = 1000;    
+        delayTime = 190;    
 
         if (startTime + delayTime < millis())
         {

@@ -21,9 +21,9 @@ void setup()
 
 void loop()
 {
-   //rotatingColor->process(false);
+   rotatingColor->process(true);
    // rotatingRainbow->process();
    // snowFall->process();
    //sequencer->process();
-   gradient->process();
+   //gradient->process();
 }
