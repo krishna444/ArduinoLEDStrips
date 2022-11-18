@@ -40,44 +40,20 @@ public:
         strip.clear(); // Initialize all pixels to 'off'
 
         startTime = millis();
+        delayTime = 1000;
         activate();
 
         // seed the random number generator with whatever noise is on pin A0 (we don't have anything connected here)
         randomSeed(analogRead(0));
     }
     void process()
-    {
-        // int sensorValue = analogRead(sensorPin);
-        delayTime = 1000;
-        // startTime = 0;
+    {      
         switchSequence();
         if (startTime + delayTime < millis())
         {
             activate();
             startTime = millis();
-        }
-
-        /*if (digitalRead(switchPin) == true)
-        {
-            bSwitchDown = true;
-            startTime = 0;
-            delay(10); // debounce
-        }
-        else
-        {
-            if (bSwitchDown)
-            {
-                // first release of switch
-                bSwitchDown = false;
-                switchSequence();
-            }
-
-            if (startTime + delayTime < millis())
-            {
-                activate();
-                startTime = millis();
-            }
-        }*/
+        }      
     }
     // call appropiate function based on sequence number
     void activate()
