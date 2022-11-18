@@ -49,7 +49,7 @@ public:
 
         for (int i = 0; i < NUMPIXELS; i++)
         {
-            strip.setPixelColor(sp, red, i * 2, green);
+            strip.setPixelColor(sp, red, i * 12, green);
 
             if (sp == NUMPIXELS)
                 sp = 0;
