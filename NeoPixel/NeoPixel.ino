@@ -1,13 +1,13 @@
 #include "src/RotatingColor/RotatingColor.h"
 //#include "src/RotatingRainbow/RotatingRainbow.h"
-//#include "src/SnowFall/SnowFall.cpp"
+#include "src/SnowFall/SnowFall.cpp"
 #include "src/Sequencer/Sequencer.cpp"
 #include "src/Gradient/Gradient.cpp"
 #include "src/TheaterAnimations/TheaterAnimations.h"
 
  RotatingColor *rotatingColor;
 //RotatingRainbow *rotatingRainbow;
-// SnowFall *snowFall;
+SnowFall *snowFall;
 Sequencer *sequencer;
 Gradient *gradient;
 TheaterAnimations* theaterAnimations;
@@ -16,7 +16,7 @@ void setup()
 {
    rotatingColor = new RotatingColor(20,114);
    //rotatingRainbow = new RotatingRainbow(800, 2000);
-   // snowFall = new SnowFall();
+   snowFall = new SnowFall();
    sequencer=new Sequencer();
    gradient=new Gradient();
    theaterAnimations=new TheaterAnimations();
@@ -24,7 +24,7 @@ void setup()
 
 void loop()
 {
-   //rotatingColor->process(false);
+   //rotatingColor->process(true);
    // rotatingRainbow->process();
    // snowFall->process();
    //sequencer->process();
