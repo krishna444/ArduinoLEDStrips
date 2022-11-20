@@ -14,6 +14,6 @@ class Leds
         }
         void process()
         {
-            this->ledLarge->write(HIGH);
+            this->ledLarge->blink(100,200);
         }
 };

@@ -11,6 +11,6 @@ void setup()
 
 void loop()
 {
-    blinkingnew.blink();    
+    //blinkingnew.blink();    
     leds->process();
 }
