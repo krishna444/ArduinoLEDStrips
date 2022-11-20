@@ -1,4 +1,3 @@
-#include <Arduino.h>
 #include "Blinking.h"
 
 Blinking::Blinking(uint8_t _pin)
