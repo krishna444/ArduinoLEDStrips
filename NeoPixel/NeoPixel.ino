@@ -15,11 +15,7 @@ TheaterAnimations* theaterAnimations;
 void setup()
 {
    rotatingColor = new RotatingColor(500,1500);
-<<<<<<< HEAD
-   //rotatingRainbow = new RotatingRainbow(800, 2000);
-=======
    rotatingRainbow = new RotatingRainbow(800, 2000);
->>>>>>> dc170ca111a288b1be522aa1c64b91f872760520
    snowFall = new SnowFall();
    sequencer=new Sequencer();
    gradient=new Gradient();
