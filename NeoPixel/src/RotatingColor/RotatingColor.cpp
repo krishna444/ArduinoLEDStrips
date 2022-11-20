@@ -38,13 +38,13 @@ void RotatingColor::singleDirection()
 {
     float light = lightSensor->read();
     Serial.print(light);
-    /*if (light > LIGHT_THRESHOLD)
+    if (light > LIGHT_THRESHOLD)
     {
         strip.clear();
         strip.show();
         delay(2000);
         return;
-    }*/
+    }
     strip.clear();
     strip.setPixelColor(selectedPixel, colors[colorIndex][0], colors[colorIndex][1], colors[colorIndex][2]);
     strip.setPixelColor((selectedPixel + NUMPIXELS / 2) % NUMPIXELS, colors[(colorIndex + 1) % NCOLOURS][0], colors[(colorIndex + 1) % NCOLOURS][1], colors[(colorIndex + 1) % NCOLOURS][2]);
@@ -68,13 +68,13 @@ void RotatingColor::multiDirection()
 {
  float light = lightSensor->read();
     Serial.print(light);
-    /*if (light > LIGHT_THRESHOLD)
+    if (light > LIGHT_THRESHOLD)
     {
         strip.clear();
         strip.show();
         delay(2000);
         return;
-    }*/
+    }
     strip.clear();
     strip.setPixelColor(selectedPixel, colors[colorIndex][0], colors[colorIndex][1], colors[colorIndex][2]);
     strip.setPixelColor((selectedPixel + NUMPIXELS / 2) % NUMPIXELS, colors[(colorIndex + 1) % NCOLOURS][0], colors[(colorIndex + 1) % NCOLOURS][1], colors[(colorIndex + 1) % NCOLOURS][2]);

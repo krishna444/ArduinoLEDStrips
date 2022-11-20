@@ -11,7 +11,7 @@ private:
     Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
     // initial colors, you can change these
     int red = 100;
-    int green = 255;
+    int blue = 255;
 
     // variable delay time
     int delayTime = 15;
@@ -49,7 +49,9 @@ public:
 
         for (int i = 0; i < NUMPIXELS; i++)
         {
-            strip.setPixelColor(sp, red, i * 12, green);
+            int green=map(i,0,NUMPIXELS,0,255);
+            
+            strip.setPixelColor(sp, 0, green, 0);
 
             if (sp == NUMPIXELS)
                 sp = 0;

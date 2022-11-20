@@ -1,12 +1,26 @@
 #include "TheaterAnimations.h"
 
+const int COLOURS[10][3] = {
+    {255, 128, 64},  // Red
+    {64, 255, 64},   // Green
+    {64, 64, 255},   // Blue
+    {255, 255, 32},  // Yellow
+    {255, 64, 255},  // Pink
+    {64, 255, 255},  // Cyan
+    {255, 255, 255}, // White
+    {148, 64, 211},  // Voilet
+    {75, 64, 130},   // Indigo
+    {255, 127, 64}   // Orange
+};
+const int NCOLOURS = sizeof(COLOURS) / sizeof(*COLOURS);
+
 TheaterAnimations::TheaterAnimations() : TheaterAnimations(50)
 {
 }
 
 TheaterAnimations::TheaterAnimations(uint8_t delay)
 {
-    this->delay_millis=delay;
+    this->delay_millis = delay;
     this->init();
 }
 
@@ -20,10 +34,14 @@ void TheaterAnimations::init()
 
 void TheaterAnimations::process()
 {
-    colorWipe(strip.Color(255, 0, 0), 50); // Red
-    colorWipe(strip.Color(0, 255, 0), 50); // Green
-    colorWipe(strip.Color(0, 0, 255), 50); // Blue
-                                           // colorWipe(strip.Color(0, 0, 0, 255), 50); // White RGBW
+    for (int i = 0; i < NCOLOURS; i++)
+    {
+        colorWipe(strip.Color(COLOURS[i][0],COLOURS[i][1],COLOURS[i][2]), 50);  
+        colorWipe(strip.Color(255, 10,10), 50);   // Red
+        colorWipe(strip.Color(10, 255, 10), 50);   // Green
+        colorWipe(strip.Color(10, 10, 255), 50);   // Blue
+        colorWipe(strip.Color(128, 128, 128), 50); // White RGBW
+    }
     //  Send a theater pixel chase in...
     theaterChase(strip.Color(127, 127, 127), 50); // White
     theaterChase(strip.Color(127, 0, 0), 50);     // Red
@@ -34,15 +52,15 @@ void TheaterAnimations::process()
     theaterChaseRainbow(50);
 }
 
+// Fill the dots one after the other with a color
 void TheaterAnimations::colorWipe(uint32_t c, uint8_t wait)
 {
     for (uint16_t i = 0; i < strip.numPixels(); i++)
     {
         this->strip.setPixelColor(i, c);
         this->strip.show();
-        delay(wait);    
+        delay(wait);
     }
-    
 }
 void TheaterAnimations::rainbow(uint8_t wait)
 {
@@ -58,6 +76,8 @@ void TheaterAnimations::rainbow(uint8_t wait)
         delay(wait);
     }
 }
+
+// Slightly different, this makes the rainbow equally distributed throughout
 void TheaterAnimations::rainbowCycle(uint8_t wait)
 {
     uint16_t i, j;
@@ -72,6 +92,8 @@ void TheaterAnimations::rainbowCycle(uint8_t wait)
         delay(wait);
     }
 }
+
+// Theatre-style crawling lights.
 void TheaterAnimations::theaterChase(uint32_t c, uint8_t wait)
 {
     for (int j = 0; j < 10; j++)
@@ -93,6 +115,8 @@ void TheaterAnimations::theaterChase(uint32_t c, uint8_t wait)
         }
     }
 }
+
+// Theatre-style crawling lights with rainbow effect
 void TheaterAnimations::theaterChaseRainbow(uint8_t wait)
 {
     for (int j = 0; j < 256; j++)
@@ -114,6 +138,9 @@ void TheaterAnimations::theaterChaseRainbow(uint8_t wait)
         }
     }
 }
+
+// Input a value 0 to 255 to get a color value.
+// The colours are a transition r - g - b - back to r.
 uint32_t TheaterAnimations::Wheel(byte WheelPos)
 {
     WheelPos = 255 - WheelPos;
