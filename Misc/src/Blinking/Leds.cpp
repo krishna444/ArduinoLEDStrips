@@ -11,10 +11,14 @@ class Leds
     public:
         Leds()
         {
-            this->ledLarge = new TKLed(O4);
+            this->tempSensor = new TKThermistor(I1);
+            Serial.begin(115200);
         }
         void process()
         {
-            this->ledLarge->blink(100,200);
+            float tempCelcius=this->tempSensor->readCelsius();
+            Serial.print(tempCelcius);
+            Serial.print("\t\t");
+            delay(10000); 
         }
 };
