@@ -21,13 +21,14 @@ private:
     int selectedPixel;
     Adafruit_NeoPixel strip;
     TKLightSensor *lightSensor;
+    TKThermistor *thermistor;
 
 public:
     RotatingColor();
     RotatingColor(uint16_t _delay);
     RotatingColor(uint16_t _min_delay, uint16_t _max_delay);
-    void process(bool _multi_direction);
-    void singleDirection();
+    void process(bool _multi_direction, bool _temperature);
+    void singleDirection(bool temp);
     void multiDirection();
 
 };
