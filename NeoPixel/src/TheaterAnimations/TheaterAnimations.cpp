@@ -37,9 +37,6 @@ void TheaterAnimations::process()
     for (int i = 0; i < NCOLOURS; i++)
     {
         colorWipe(strip.Color(COLOURS[i][0],COLOURS[i][1],COLOURS[i][2]), 50);  
-        colorWipe(strip.Color(255, 10,10), 50);   // Red
-        colorWipe(strip.Color(10, 255, 10), 50);   // Green
-        colorWipe(strip.Color(10, 10, 255), 50);   // Blue
         colorWipe(strip.Color(128, 128, 128), 50); // White RGBW
     }
     //  Send a theater pixel chase in...
