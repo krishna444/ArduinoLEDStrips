@@ -20,7 +20,7 @@ RotatingColor::RotatingColor(uint16_t _delay) : RotatingColor(_delay, _delay)
 RotatingColor::RotatingColor(uint16_t _min_delay, uint16_t _max_delay)
 {
     this->strip = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-    //this->lightSensor = new TKLightSensor(I0);
+    this->lightSensor = new TKLightSensor(I0);
     this->thermistor = new TKThermistor(I1);
     min_delay = _min_delay;
     max_delay = _max_delay;
@@ -37,10 +37,8 @@ void RotatingColor::process(boolean _multi_direction, boolean _temperature)
 
 void RotatingColor::singleDirection(bool temp = false)
 {
-    float light = 10;//lightSensor->read();
-    //delay(10);
+    float light = lightSensor->read();
     float tempC = thermistor->readCelsius();    
-    delay(500);
     Serial.print("Light=");Serial.print(light);Serial.print("\t");Serial.print("Temp=");Serial.println(tempC);
     if (light > LIGHT_THRESHOLD)
     {
