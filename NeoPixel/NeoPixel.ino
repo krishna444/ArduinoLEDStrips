@@ -15,7 +15,7 @@ TheaterAnimations* theaterAnimations;
 void setup()
 {
    rotatingColor = new RotatingColor(240,1000);
-   rotatingRainbow = new RotatingRainbow(800, 2000);
+   rotatingRainbow = new RotatingRainbow(1,1);
    snowFall = new SnowFall();
    sequencer=new Sequencer();
    gradient=new Gradient();
@@ -24,8 +24,8 @@ void setup()
 
 void loop()
 {
-   rotatingColor->process(false,true);
-   //rotatingRainbow->process();
+   //rotatingColor->process(false,true);
+   rotatingRainbow->process();
    // snowFall->process();
    //sequencer->process();
    //gradient->process();
