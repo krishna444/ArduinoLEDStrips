@@ -26,7 +26,6 @@ RotatingRainbow::RotatingRainbow(uint16_t _min_delay, uint16_t _max_delay)
     min_delay = _min_delay;
     max_delay = _max_delay;
     delay_millis = random(_min_delay, _max_delay);
-    Serial.begin(115200);
     strip.begin();
 }
 
