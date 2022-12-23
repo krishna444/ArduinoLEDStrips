@@ -7,19 +7,19 @@ private:
     TKThermistor *tempSensor;
 
 public:
-    float temp=0;
-    float light=0;
+    float temp = 0;
+    float light = 0;
     float prevTemp = 0;
     float prevLight = 0;
-    SensorInfo()
+    SensorsInfo()
     {
         this->tempSensor = new TKThermistor(I1);
         this->lightSensor = new TKLightSensor(I0);
         Serial.begin(115200);
     }
 
-     void process()
-     {
+    void process()
+    {
         temp = this->tempSensor->readCelsius();
         light = this->lightSensor->read();
 
@@ -31,8 +31,8 @@ public:
             Serial.print("light:");
             Serial.println(light);
             prevTemp = temp;
-            prevLight =light;
+            prevLight = light;
         }
         delay(1000);
-     }
+    }
 };
