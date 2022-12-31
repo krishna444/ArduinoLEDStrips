@@ -5,7 +5,7 @@
 #include "src/Gradient/Gradient.cpp"
 #include "src/TheaterAnimations/TheaterAnimations.h"
 #include "src/SensorsInfo/SensorsInfo.cpp"
-#include "src/SensorsInfo/Leds.cpp"
+//#include "src/SensorsInfo/Leds.cpp"
 
 RotatingColor *rotatingColor;
 RotatingRainbow *rotatingRainbow;
@@ -14,7 +14,7 @@ Sequencer *sequencer;
 Gradient *gradient;
 TheaterAnimations *theaterAnimations;
 SensorsInfo *sensorsInfo;
-Leds *leds;
+//Leds *leds;
 
 void setup()
 {
@@ -25,7 +25,7 @@ void setup()
    gradient = new Gradient();
    theaterAnimations = new TheaterAnimations();
    sensorsInfo = new SensorsInfo();
-   leds = new Leds();
+   //leds = new Leds();
 }
 
 void loop()
